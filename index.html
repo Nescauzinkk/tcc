@@ -1,12 +1,150 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Projeto de TCC - Site de Estudos para CEEP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        pre {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        code {
+            font-family: monospace;
+            background-color: #f9f9f9;
+        }
+    </style>
 </head>
 <body>
-    <p>ola</p>
-    <h2>aldo</h2>
+    <h1>Projeto de TCC - Site de Estudos para CEEP</h1>
+    <p>Este projeto consiste na criação de um site de estudos voltado para estudantes dos 3 anos de um curso técnico em Desenvolvimento de Sistemas. O objetivo principal é fornecer uma plataforma online com conteúdo relevante para as matérias específicas do curso, como lógica de programação, banco de dados, algoritmos, redes de computadores e outras disciplinas voltadas para o desenvolvimento de sistemas.</p>
+
+    <h2>Matérias</h2>
+    <ul>
+        <li><strong>Front-end</strong>: HTML, CSS, JavaScript (com uso de frameworks como React.js)</li>
+        <li><strong>Back-end</strong>: Node.js, PHP, Python</li>
+        <li><strong>Banco de Dados</strong>: MySQL (SQL)</li>
+        <li><strong>Controle de Versão</strong>: Git/GitHub</li>
+        <li><strong>COmputação Gráfica</strong>: CorelDraw, Photoshop, Canva</li>
+    </ul>
+
+    <h2>Objetivos do Projeto</h2>
+    <ul>
+        <li>Criar uma plataforma de estudos online com conteúdo exclusivo para alunos de cursos técnicos em Desenvolvimento de Sistemas.</li>
+        <li>Desenvolver funcionalidades como: criação de contas de usuários, login/logout, busca de conteúdo e visualização de material didático.</li>
+        <li>Prover materiais interativos como quizzes, tutoriais em vídeo e exercícios práticos.</li>
+        <li>Implementar um sistema de avaliações e acompanhamento do progresso do aluno.</li>
+    </ul>
+
+    <h2>Funcionalidades</h2>
+
+    <h3>1. Cadastro e Login de Usuários</h3>
+    <ul>
+        <li>Os alunos podem criar suas contas e acessar o site de forma personalizada.</li>
+        <li>A autenticação é realizada por meio de e-mail e senha.</li>
+        <li>O sistema utiliza JWT para garantir a segurança na comunicação.</li>
+    </ul>
+
+    <h3>2. Módulos de Estudo</h3>
+    <ul>
+        <li>Conteúdo de diversas matérias do curso de Desenvolvimento de Sistemas:
+            <ul>
+                <li>Lógica de Programação</li>
+                <li>Algoritmos e Estruturas de Dados</li>
+                <li>Banco de Dados (SQL e NoSQL)</li>
+                <li>Redes de Computadores</li>
+                <li>Programação Orientada a Objetos</li>
+            </ul>
+        </li>
+        <li>Cada módulo possui textos explicativos, exercícios práticos e quizzes.</li>
+    </ul>
+
+    <h3>3. Sistema de Progresso</h3>
+    <ul>
+        <li>Acompanhamento do desempenho do aluno em cada módulo, com relatórios gráficos.</li>
+        <li>Feedback personalizado baseado nos acertos e erros nos quizzes.</li>
+    </ul>
+
+    <h3>4. Busca e Filtro de Conteúdo</h3>
+    <ul>
+        <li>Os alunos podem buscar por termos específicos ou filtrar conteúdos por matéria ou tipo (texto, vídeo, quiz, etc.).</li>
+    </ul>
+
+    <h3>5. Área de Admin</h3>
+    <ul>
+        <li>O administrador pode adicionar, editar ou remover materiais didáticos, além de gerenciar usuários.</li>
+        <li>O administrador tem acesso aos relatórios de progresso de todos os alunos.</li>
+    </ul>
+
+    <h2>Instalação</h2>
+    <h3>Pré-requisitos</h3>
+    <ul>
+        <li><strong>Node.js</strong> (versão 14.x ou superior)</li>
+        <li><strong>npm</strong> (gerenciador de pacotes do Node.js)</li>
+        <li><strong>MongoDB</strong> (para o banco de dados NoSQL) ou <strong>MySQL</strong> (para banco de dados relacional)</li>
+        <li><strong>Git</strong> (para controle de versão)</li>
+    </ul>
+
+    <h3>Passos para rodar o projeto</h3>
+    <ol>
+        <li>Clone o repositório:
+            <pre><code>git clone https://github.com/usuario/tcc-site-estudos.git</code></pre>
+        </li>
+        <li>Navegue até o diretório do projeto:
+            <pre><code>cd tcc-site-estudos</code></pre>
+        </li>
+        <li>Instale as dependências do backend:
+            <pre><code>cd backend
+npm install</code></pre>
+        </li>
+        <li>Instale as dependências do frontend:
+            <pre><code>cd frontend
+npm install</code></pre>
+        </li>
+        <li>Configure o banco de dados:
+            <ul>
+                <li>Se estiver usando MongoDB, configure a conexão no arquivo <code>.env</code> com a URL do seu banco de dados.</li>
+                <li>Se estiver usando MySQL, configure as credenciais no arquivo de configuração.</li>
+            </ul>
+        </li>
+        <li>Inicie o servidor backend:
+            <pre><code>cd backend
+npm start</code></pre>
+        </li>
+        <li>Inicie o frontend:
+            <pre><code>cd frontend
+npm start</code></pre>
+        </li>
+        <li>Acesse o site no navegador em <strong>http://localhost:3000</strong>.</li>
+    </ol>
+
+    <h2>Estrutura do Projeto</h2>
+
+    <h2>Contribuições</h2>
+    <p>Contribuições são bem-vindas! Para contribuir, siga os passos abaixo:</p>
+    <ol>
+        <li>Faça o fork do repositório.</li>
+        <li>Crie uma nova branch para sua feature (<code>git checkout -b feature/novafeature</code>).</li>
+        <li>Faça as alterações e commit (<code>git commit -am 'Adiciona nova feature'</code>).</li>
+        <li>Faça o push para a branch (<code>git push origin feature/novafeature</code>).</li>
+        <li>Abra um pull request.</li>
+    </ol>
+
+    <h2>Dúvidas</h2>
+    <p>Se tiver dúvidas, nos mande um email! <a href="mailto: baluta.santos.aldo@escola.pr.gov.br">baluta.santos.aldo@escola.pr.gov.br</a> ou <a href="mailto: mayer.santos.joao@escola.pr.gov.br">mayer.santos.joao@escola.pr.gov.br</a></p>
 </body>
 </html>
