@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login do Professor</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;800;900&display=swap');
+
+        :root {
+            --primary-blue: #0057FF;
+            --light-blue-icon: #00D1FF;
+            --light-gray-bg: #F0F0F0; /* Cor de fundo um pouco mais clara que a anterior */
+            --white: #FFFFFF;
+            --black: #000000;
+            --purple-star: #8A2BE2;
+            --yellow-swoosh: #FFD700;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #e9ebee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            display: flex;
+            width: 900px;
+            height: 550px;
+            border-radius: 25px;
+            overflow: hidden;
+            background-color: var(--light-gray-bg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .panel {
+            flex: 1;
+            padding: 40px 50px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Painel da Esquerda (Formulário) --- */
+        .form-panel {
+            justify-content: center;
+        }
+        
+        .logo-text {
+            font-size: 54px;
+            font-weight: 900;
+            color: var(--primary-blue);
+            line-height: 1;
+            margin-bottom: 40px;
+        }
+
+        .logo-text .line-1 { display: flex; align-items: center; }
+        .logo-text .line-2 { padding-left: 15px; }
+        .logo-text svg { width: 45px; height: 45px; margin-left: 8px; fill: var(--light-blue-icon); }
+
+        .login-form {
+            width: 100%;
+            position: relative;
+        }
+
+        .login-form label {
+            display: block;
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 16px;
+            margin: 20px 0 8px 15px;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: 2px solid var(--primary-blue);
+            background-color: #E0E0E0;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box; /* Garante que padding não afete a largura */
+        }
+        
+        .login-form input:focus {
+            outline: none;
+            box-shadow: 0 0 5px var(--primary-blue);
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 40px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 800;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            border-bottom: 4px solid #0033A0; /* Efeito 3D sutil */
+            transition: all 0.1s ease-in-out;
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .submit-button:active {
+            transform: translateY(2px);
+            border-bottom-width: 2px;
+        }
+        
+        /* Elementos decorativos */
+        .swoosh-decoration, .star-decoration {
+            position: absolute;
+            z-index: 1;
+            pointer-events: none; /* Impede que o SVG bloqueie o clique no input */
+        }
+
+        .swoosh-decoration {
+            width: 100px;
+            height: 100px;
+            top: 20px;
+            right: -30px;
+        }
+        
+        .star-decoration {
+            width: 50px;
+            height: 50px;
+            bottom: 65px;
+            left: -15px;
+        }
+
+
+        /* --- Painel da Direita (Info) --- */
+        .info-panel {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .info-panel h2 {
+            font-size: 36px;
+            font-weight: 600;
+            margin: 0;
+            line-height: 1.3;
+        }
+        
+        .illustration-placeholder {
+            width: 80%;
+            max-width: 300px;
+            height: 250px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            padding: 20px;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 950px) {
+            .login-container {
+                flex-direction: column;
+                width: 95%;
+                max-width: 450px;
+                height: auto;
+                margin: 20px 0;
+            }
+            .panel { padding: 40px; }
+            .info-panel {
+                /* Inverte a ordem visual em telas pequenas */
+                order: -1; 
+                height: 300px;
+            }
+            .logo-text { font-size: 48px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="panel form-panel">
+            <div class="logo-text">
+                <div class="line-1">
+                    FALAÍ,
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50,0 L61.2,30.9 L95.1,30.9 L69.5,50 L80.7,80.9 L50,61.8 L19.3,80.9 L30.5,50 L4.9,30.9 L38.8,30.9 Z" transform="rotate(15 50 50) scale(1.2)"/>
+                        <path d="M50,0 L61.2,30.9 L95.1,30.9 L69.5,50 L80.7,80.9 L50,61.8 L19.3,80.9 L30.5,50 L4.9,30.9 L38.8,30.9 Z" transform="rotate(-15 50 50) scale(1.1)"/>
+                    </svg>
+                </div>
+                <div class="line-2">
+                    PROFE!
+                </div>
+            </div>
+
+            <form class="login-form" id="loginForm">
+                 <svg class="swoosh-decoration" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 10 50 C 30 10, 70 10, 90 50" stroke="var(--yellow-swoosh)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                </svg>
+
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit" class="submit-button">ENTRAR</button>
+                
+                <svg class="star-decoration" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 0 L61 39 L100 50 L61 61 L50 100 L39 61 L0 50 L39 39 Z" fill="var(--purple-star)"/>
+                </svg>
+            </form>
+        </div>
+
+        <div class="panel info-panel">
+            <h2>Muito bem, insira suas informações!</h2>
+            <div class="illustration-placeholder">
+                Área para sua ilustração 3D
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const loginForm = document.getElementById('loginForm');
+
+        loginForm.addEventListener('submit', function(event) {
+            // Previne que a página recarregue ao enviar o formulário
+            event.preventDefault(); 
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email && password) {
+                console.log('Tentativa de login com:');
+                console.log('E-mail:', email);
+                console.log('Senha:', password);
+                alert('Login efetuado! (Verifique o console para mais detalhes)');
+                // Aqui você adicionaria a lógica para validar o login
+            } else {
+                alert('Por favor, preencha todos os campos.');
+            }
+        });
+    </script>
+
+</body>
+</html>
