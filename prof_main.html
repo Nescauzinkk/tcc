@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Professor</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
+
+        :root {
+            --primary-blue: #0057FF;
+            --light-gray-bg: #F0F0F0;
+            --dark-text: #333333;
+            --light-text: #888888;
+            --white: #FFFFFF;
+            --border-color: #E0E0E0;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--white);
+            color: var(--dark-text);
+        }
+
+        .profile-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        /* --- Cabeçalho --- */
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 50px;
+        }
+
+        .profile-title-section h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 0 20px 0;
+        }
+        
+        .profile-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .teacher-details h2 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .teacher-details p {
+            margin: 5px 0 0 0;
+            color: var(--light-text);
+        }
+        
+        /* --- Conteúdo Principal --- */
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .content-section {
+            flex: 1;
+        }
+
+        .content-section h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .content-box {
+            background-color: var(--light-gray-bg);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- Lista de Turmas (Esquerda) --- */
+        .class-list-box .class-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            cursor: pointer;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.2s;
+        }
+        .class-list-box .class-item:last-child {
+            border-bottom: none;
+        }
+        .class-list-box .class-item:hover {
+            background-color: #e5e5e5;
+        }
+        
+        .selection-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #d1d1d1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: bold;
+        }
+        
+        .class-item.active .selection-circle {
+            background-color: var(--dark-text);
+        }
+
+        .checkmark-placeholder {
+            display: none;
+        }
+
+        .class-item.active .checkmark-placeholder {
+            display: block;
+        }
+        
+        /* --- Lista de Notas (Direita) --- */
+        .grades-box {
+            height: 300px;
+            overflow-y: auto;
+        }
+        
+        .grades-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .grades-list li {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .grades-list li:last-child {
+            border-bottom: none;
+        }
+
+        .grade-bullet {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #d1d1d1;
+            margin-right: 15px;
+        }
+        
+        /* Scrollbar Personalizado */
+        .grades-box::-webkit-scrollbar {
+            width: 8px;
+        }
+        .grades-box::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .grades-box::-webkit-scrollbar-thumb {
+            background-color: var(--primary-blue);
+            border-radius: 10px;
+        }
+
+        /* --- Placeholders --- */
+        .placeholder {
+            background-color: #f0f0f0;
+            border: 2px dashed #ccc;
+            color: #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .profile-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+        }
+
+        .placeholder-logo {
+            width: 120px;
+            height: 60px;
+            border-radius: 8px;
+        }
+        
+        .placeholder-inline-icon {
+            font-size: 10px;
+            padding: 4px;
+            border-radius: 4px;
+            border: 1px dashed #ccc;
+            background-color: #f5f5f5;
+        }
+        
+        .connecting-shape-placeholder {
+            flex: 0.5;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+        <header class="profile-header">
+            <div class="profile-title-section">
+                <h1>SEU PERFIL</h1>
+                <div class="profile-info">
+                    <div class="placeholder profile-avatar">Área da Imagem (Avatar)</div>
+                    <div class="teacher-details">
+                        <h2>Nome do professor</h2>
+                        <p>Matéria 1/matéria 2 <span class="placeholder-inline-icon">ícone</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="placeholder placeholder-logo">Área do Logo</div>
+        </header>
+
+        <main class="main-content">
+            <section class="content-section">
+                <h3>Turmas <span class="placeholder-inline-icon">ícone</span></h3>
+                <div class="content-box class-list-box" id="classList">
+                    <div class="class-item active">
+                        <span>TURMA X</span>
+                        <div class="selection-circle">
+                            <span class="checkmark-placeholder">✔</span>
+                        </div>
+                    </div>
+                    <div class="class-item">
+                        <span>TURMA Y</span>
+                        <div class="selection-circle">
+                            <span class="checkmark-placeholder">✔</span>
+                        </div>
+                    </div>
+                    <div class="class-item">
+                        <span>TURMA Z</span>
+                        <div class="selection-circle">
+                            <span class="checkmark-placeholder">✔</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="placeholder connecting-shape-placeholder">Área da Forma (Conexão)</div>
+
+            <section class="content-section">
+                <h3>Notas</h3>
+                <div class="content-box grades-box">
+                    <ul class="grades-list">
+                        <li><div class="grade-bullet"></div> Aluno A - Nota...</li>
+                        <li><div class="grade-bullet"></div> Aluno B - Nota...</li>
+                        <li><div class="grade-bullet"></div> Aluno C - Nota...</li>
+                        <li><div class="grade-bullet"></div> Aluno D - Nota...</li>
+                        <li><div class="grade-bullet"></div> Aluno E - Nota...</li>
+                        <li><div class="grade-bullet"></div> Aluno F - Nota...</li>
+                        <li><div class="grade-bullet"></div> Aluno G - Nota...</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const classListBox = document.getElementById('classList');
+        const classItems = classListBox.querySelectorAll('.class-item');
+
+        classItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Remove a classe 'active' de todos os itens
+                classItems.forEach(i => i.classList.remove('active'));
+                
+                // Adiciona a classe 'active' ao item clicado
+                item.classList.add('active');
+                
+                const className = item.querySelector('span').textContent;
+                console.log(`Turma selecionada: ${className}. As notas correspondentes seriam carregadas aqui.`);
+            });
+        });
+    </script>
+
+</body>
+</html>

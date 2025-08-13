@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edição de Turmas</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;900&display=swap');
+
+        :root {
+            --primary-blue: #0057FF;
+            --light-gray-bg: #F0F0F0;
+            --dark-gray-field: #d1d1d1;
+            --dark-text: #333333;
+            --light-text: #888888;
+            --white: #FFFFFF;
+            --border-color: #E0E0E0;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--white);
+            color: var(--dark-text);
+            padding: 40px;
+        }
+
+        .edit-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            margin-top: 50px;
+        }
+        
+        .panel {
+            background-color: var(--light-gray-bg);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- Painel da Esquerda (Lista de Turmas) --- */
+        .class-list-panel {
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .class-list-panel h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 0 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .scrollable-box {
+            height: 400px;
+            overflow-y: auto;
+        }
+
+        .class-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 10px;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .class-item:last-child {
+            border-bottom: none;
+        }
+        .class-item.active, .class-item:hover {
+            background-color: #e5e5e5;
+        }
+
+        .class-item span {
+            flex-grow: 1;
+            margin: 0 15px;
+        }
+
+        /* --- Painel da Direita (Detalhes da Turma) --- */
+        .class-details-panel {
+            flex: 1.5;
+            max-width: 600px;
+        }
+
+        .class-details-panel h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 30px 0;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+        
+        .form-group label {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-text);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .form-group input, .form-group .placeholder-textarea {
+            width: 100%;
+            background-color: var(--dark-gray-field);
+            border: none;
+            border-radius: 50px;
+            padding: 15px 20px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .form-group .placeholder-textarea {
+            height: 200px;
+            border-radius: 20px;
+            resize: none;
+        }
+
+        /* --- Scrollbar Personalizado --- */
+        .scrollable-box::-webkit-scrollbar {
+            width: 8px;
+        }
+        .scrollable-box::-webkit-scrollbar-track {
+            background: transparent;
+            margin: 15px 0;
+        }
+        .scrollable-box::-webkit-scrollbar-thumb {
+            background-color: var(--primary-blue);
+            border-radius: 10px;
+        }
+
+        /* --- Placeholders --- */
+        .placeholder {
+            background-color: #f0f0f0;
+            border: 2px dashed #ccc;
+            color: #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .placeholder-logo {
+            width: 120px;
+            height: 60px;
+            border-radius: 8px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        
+        .placeholder-inline-icon {
+            font-size: 10px;
+            padding: 4px;
+            border-radius: 4px;
+            border: 1px dashed #ccc;
+            background-color: #f5f5f5;
+        }
+
+        .item-icon-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--dark-gray-field);
+        }
+
+        .connecting-shape-placeholder {
+            flex: 0.5;
+            max-width: 100px;
+            align-self: center;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="edit-container">
+        <div class="placeholder placeholder-logo">Área do Logo</div>
+
+        <div class="main-content">
+            <div class="class-list-panel">
+                <h2>EDITAR TURMAS <span class="placeholder-inline-icon">ícone</span></h2>
+                <div class="panel scrollable-box">
+                    <div id="classList">
+                        <div class="class-item">
+                            <div class="item-icon-circle"></div>
+                            <span>TURMA X</span>
+                            <div class="placeholder-inline-icon">lápis</div>
+                        </div>
+                        <div class="class-item active">
+                            <div class="item-icon-circle"></div>
+                            <span>TURMA Y</span>
+                            <div class="placeholder-inline-icon">lápis</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="item-icon-circle"></div>
+                            <span>TURMA Z</span>
+                            <div class="placeholder-inline-icon">lápis</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="item-icon-circle"></div>
+                            <span>TURMA A</span>
+                            <div class="placeholder-inline-icon">lápis</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="item-icon-circle"></div>
+                            <span>TURMA B</span>
+                            <div class="placeholder-inline-icon">lápis</div>
+                        </div>
+                        <div class="class-item">
+                            <div class="item-icon-circle"></div>
+                            <span>TURMA C</span>
+                            <div class="placeholder-inline-icon">lápis</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="placeholder connecting-shape-placeholder">Área da Forma</div>
+
+            <div class="panel class-details-panel">
+                <h3 id="selectedClassName">TURMA Y</h3>
+                
+                <div class="form-group">
+                    <label for="classNameInput">NOME DA TURMA</label>
+                    <input type="text" id="classNameInput" value="TURMA Y">
+                </div>
+                
+                <div class="form-group">
+                    <label for="studentList">LISTA DE ALUNOS</label>
+                    <div class="placeholder placeholder-textarea">Área da Lista de Alunos</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const classListContainer = document.getElementById('classList');
+            const classItems = classListContainer.querySelectorAll('.class-item');
+            
+            const selectedClassNameTitle = document.getElementById('selectedClassName');
+            const classNameInput = document.getElementById('classNameInput');
+
+            classItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    // Remove a classe 'active' de todos os itens
+                    classItems.forEach(i => i.classList.remove('active'));
+                    
+                    // Adiciona a classe 'active' ao item clicado
+                    item.classList.add('active');
+                    
+                    // Atualiza o painel da direita
+                    const className = item.querySelector('span').textContent;
+                    selectedClassNameTitle.textContent = className;
+                    classNameInput.value = className;
+                    
+                    console.log(`Editando a ${className}...`);
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
