@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login do Professor</title>
+    <link rel="stylesheet" href="prof.css">
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="panel form-panel">
+            <div class="">
+                <div class="logo">
+                    <img src="../../assets/logo.png" alt="" width="300px">
+                </div>
+            </div>
+
+            <form class="login-form" id="loginForm">
+                 <div class="asset1">
+                    <img src="../../assets/asset1.png" alt="" width="150px">
+                 </div>
+
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit" class="submit-button">ENTRAR</button>
+                
+                <div class="star">
+                    <img src="../../assets/star.png" alt="" width="100px">
+                </div>
+            </form>
+        </div>
+
+        <div class="panel info-panel">
+            <h2>Muito bem, insira suas informações!</h2>
+            <div class="illustration-placeholder">
+                Área para sua ilustração 3D
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const loginForm = document.getElementById('loginForm');
+
+        loginForm.addEventListener('submit', function(event) {
+            // Previne que a página recarregue ao enviar o formulário
+            event.preventDefault(); 
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email && password) {
+                console.log('Tentativa de login com:');
+                console.log('E-mail:', email);
+                console.log('Senha:', password);
+                alert('Login efetuado! (Verifique o console para mais detalhes)');
+                // Aqui você adicionaria a lógica para validar o login
+            } else {
+                alert('Por favor, preencha todos os campos.');
+            }
+        });
+    </script>
+
+</body>
+</html>
